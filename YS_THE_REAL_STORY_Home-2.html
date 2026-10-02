@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YS THE REAL STORY</title>
+<meta name="description" content="YS THE REAL STORY — AI Prompt and Creative Tools">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7f7f7;color:#111;font-family:Arial,"Noto Sans Bengali",sans-serif}
+.wrap{max-width:1000px;margin:auto;padding:16px}
+.header{background:#111;color:#fff;border-radius:22px;padding:18px;box-shadow:0 4px 18px #0002}
+.top{display:flex;align-items:center;gap:12px}
+.logo{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+.brand h1{margin:0;font-size:23px}.brand p{margin:5px 0 0;color:#bbb;font-size:13px}
+.nav{display:flex;gap:8px;overflow-x:auto;margin-top:16px}
+.nav a{color:#fff;text-decoration:none;background:#222;padding:10px 14px;border-radius:12px;font-weight:700;white-space:nowrap;font-size:14px}
+.card{background:#fff;border:1px solid #ddd;border-radius:20px;padding:22px;margin:16px 0;box-shadow:0 3px 15px #0000000b}
+.hero{text-align:center;padding:32px 20px}.hero h2{font-size:29px;margin:0 0 10px}.hero p{color:#666;line-height:1.7}
+.btn{display:inline-block;background:#111;color:#fff;text-decoration:none;border:0;border-radius:14px;padding:14px 20px;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tool{margin:0;cursor:pointer}.tool h3{margin:0 0 7px}.tool p{margin:0;color:#666;line-height:1.5}
+label{display:block;font-weight:700;font-size:20px;margin-bottom:10px}
+input{width:100%;height:56px;border:2px solid #ddd;border-radius:16px;padding:0 18px;font-size:18px;outline:0}
+input:focus{border-color:#777}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+button{border:0;border-radius:14px;padding:14px 20px;font-size:16px;font-weight:700;cursor:pointer}
+.primary{background:#111;color:#fff}.secondary{background:#eee;color:#111}
+textarea{width:100%;min-height:620px;border:1px solid #ddd;border-radius:16px;padding:18px;font-size:15px;line-height:1.65;resize:vertical}
+.status{margin-top:10px;color:#18864b;font-weight:700;min-height:22px}
+.small{font-size:14px;color:#777;margin-top:9px}
+.footer{text-align:center;color:#777;padding:20px}
+@media(max-width:650px){.cards{grid-template-columns:1fr}.hero h2{font-size:25px}.logo{width:52px;height:52px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="header">
+  <div class="top">
+    <img class="logo" src="logo.png" alt="YS THE REAL STORY Logo">
+    <div class="brand">
+      <h1>YS THE REAL STORY</h1>
+      <p>AI Prompt • Video • Creative Tools</p>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#home">🏠 Home</a>
+    <a href="#tools">🧰 Tools</a>
+    <a href="#p1">🍔 P1 Food Factory</a>
+    <a href="#about">ℹ️ About</a>
+  </nav>
+</header>
+
+<section id="home" class="card hero">
+  <h2>YS THE REAL STORY-তে স্বাগতম</h2>
+  <p>AI ভিডিও, ইমেজ এবং ক্রিয়েটিভ কনটেন্ট তৈরির জন্য সহজ ও ব্যবহারযোগ্য Prompt Tools এক জায়গায়। নিচ থেকে প্রয়োজনীয় Tool নির্বাচন করো।</p>
+  <a class="btn" href="#tools">Tools দেখুন</a>
+</section>
+
+<section id="tools" class="card">
+  <h2 style="margin-top:0">🧰 আমাদের Tools</h2>
+  <div class="cards">
+    <div class="card tool" onclick="document.getElementById('p1').scrollIntoView()">
+      <h3>🍔 P1 — Food Factory</h3>
+      <p>খাবারের নাম দিয়ে Miniature Giant Food Factory ভিডিও প্রম্পট তৈরি করুন।</p>
+    </div>
+    <div class="card tool">
+      <h3>🎨 P2 — Image Prompt</h3>
+      <p>ইমেজ জেনারেশনের Prompt Tool — শিগগিরই যোগ করা হবে।</p>
+    </div>
+    <div class="card tool">
+      <h3>🎬 P3 — Shorts Script</h3>
+      <p>YouTube Shorts-এর স্ক্রিপ্ট তৈরির Tool — শিগগিরই যোগ করা হবে।</p>
+    </div>
+    <div class="card tool">
+      <h3>🎙️ P4 — Voiceover</h3>
+      <p>ভিডিওর Voiceover Script তৈরির Tool — শিগগিরই যোগ করা হবে।</p>
+    </div>
+  </div>
+</section>
+
+<section id="p1">
+  <div class="card">
+    <h2 style="margin-top:0">🍔 P1 — Miniature Giant Food Factory</h2>
+    <p style="color:#666">খাবারের নাম একবার লিখে পুরো ভিডিও তৈরির Prompt বানিয়ে নাও।</p>
+    <label for="food">খাবারের নাম লিখুন</label>
+    <input id="food" type="search" placeholder="যেমন: পাউরুটি, ভাত, বিরিয়ানি, পিজ্জা" autocomplete="off">
+    <div class="buttons">
+      <button class="primary" onclick="makePrompt()">প্রম্পট তৈরি করুন</button>
+      <button class="secondary" onclick="copyPrompt()">প্রম্পট কপি করুন</button>
+    </div>
+    <div id="status" class="status"></div>
+    <div class="small">খাবারের নাম একবার লিখলেই পুরো প্রম্পটে স্বয়ংক্রিয়ভাবে বসবে।</div>
+  </div>
+
+  <div class="card">
+    <label for="prompt">সম্পূর্ণ ভিডিও তৈরির প্রম্পট</label>
+    <textarea id="prompt" readonly placeholder="খাবারের নাম লিখে “প্রম্পট তৈরি করুন” চাপুন..."></textarea>
+  </div>
+</section>
+
+<section id="about" class="card">
+  <h2 style="margin-top:0">ℹ️ About</h2>
+  <p style="color:#666;line-height:1.7">YS THE REAL STORY হলো AI Prompt ও Creative Content তৈরির একটি সহজ প্ল্যাটফর্ম। ভবিষ্যতে এখানে আরও Creator Tools যোগ করা যাবে।</p>
+</section>
+
+<footer class="footer">© 2026 YS THE REAL STORY</footer>
+</div>
+
+<script>
+const template = `একটি অত্যন্ত বাস্তবসম্মত, সিনেমাটিক Miniature Giant Food Factory ভিডিও তৈরি করো, যেখানে শত শত ক্ষুদ্রাকৃতির শ্রমিক একটি বিশালাকার খাবার উৎপাদন কারখানায় কাজ করছে। কারখানার প্রতিটি ধাপে বিশাল মেশিন, ক্ষুদ্র শ্রমিক, বাস্তবসম্মত উপকরণ এবং নিখুঁত স্কেল দেখা যাবে।
+
+Scene 1 — কাঁচামাল পরিবহন:
+একটি বিশাল আধুনিক ফুড ফ্যাক্টরিতে ছোট ছোট ট্রাক ও ক্ষুদ্র শ্রমিকরা কাঁচামাল নিয়ে প্রবেশ করছে। বিশাল কনভেয়র বেল্টের মাধ্যমে উপকরণগুলো উৎপাদন লাইনে যাচ্ছে।
+
+Scene 2 — কাঁচামাল প্রস্তুতি:
+শত শত ক্ষুদ্র শ্রমিক বিশাল মেশিনের সাহায্যে কাঁচামাল পরিষ্কার, বাছাই, কাটা এবং প্রস্তুত করছে। প্রতিটি কাজ অত্যন্ত বিস্তারিত ও বাস্তবসম্মতভাবে দেখানো হবে।
+
+Scene 3 — মূল উৎপাদন প্রক্রিয়া:
+বিশালাকার শিল্প মেশিনের মাধ্যমে [FOOD] তৈরির প্রধান প্রক্রিয়া দেখাও। ক্ষুদ্র শ্রমিকরা কন্ট্রোল প্যানেল পরিচালনা করছে, মেশিন পর্যবেক্ষণ করছে এবং উৎপাদনের প্রতিটি ধাপ পরীক্ষা করছে।
+
+Scene 4 — রান্না / প্রক্রিয়াজাতকরণ:
+বিশাল শিল্প মেশিনে [FOOD] রান্না বা প্রক্রিয়াজাত হচ্ছে। বাস্তবসম্মত বাষ্প, তাপ, আলো, খাবারের টেক্সচার এবং মেশিনের নড়াচড়া দেখাও।
+
+Scene 5 — চূড়ান্ত খাবার:
+প্রচুর পরিমাণে তৈরি হওয়া [FOOD] বিশাল কনভেয়র বেল্ট দিয়ে এগিয়ে যাচ্ছে। ক্ষুদ্র শ্রমিকরা খাবারের মান পরীক্ষা করছে এবং পরবর্তী ধাপের জন্য প্রস্তুত করছে।
+
+Scene 6 — প্যাকেজিং:
+ক্ষুদ্র শ্রমিকরা বিশাল স্বয়ংক্রিয় প্যাকেজিং মেশিন ব্যবহার করে তৈরি [FOOD] প্যাকেটজাত করছে। সিল করা, লেবেল লাগানো এবং কোয়ালিটি চেকের দৃশ্য দেখাও।
+
+Final Scene:
+পুরো বিশাল ফুড ফ্যাক্টরি পূর্ণ গতিতে চলছে। শত শত ক্ষুদ্র শ্রমিক বিশাল মেশিনের চারপাশে কাজ করছে এবং বিপুল পরিমাণ [FOOD] উৎপাদন হচ্ছে।
+
+Visual Style:
+Ultra-realistic, cinematic, highly detailed miniature world, realistic industrial environment, natural cinematic lighting, realistic textures, macro photography look, depth of field, smooth camera movement, physically accurate scale, realistic workers and machinery, 4K/8K quality, no watermark, no unnecessary text.`;
+
+function makePrompt(){
+  const food=document.getElementById("food").value.trim();
+  if(!food){document.getElementById("status").textContent="আগে খাবারের নাম লিখুন।";return;}
+  document.getElementById("prompt").value=template.replaceAll("[FOOD]",food);
+  document.getElementById("status").textContent="প্রম্পট তৈরি হয়েছে।";
+}
+async function copyPrompt(){
+  const p=document.getElementById("prompt").value;
+  if(!p){document.getElementById("status").textContent="আগে প্রম্পট তৈরি করুন।";return;}
+  try{await navigator.clipboard.writeText(p);document.getElementById("status").textContent="প্রম্পট কপি হয়েছে।"}
+  catch(e){document.getElementById("prompt").select();document.execCommand("copy");document.getElementById("status").textContent="প্রম্পট কপি হয়েছে।"}
+}
+document.getElementById("food").addEventListener("keydown",e=>{if(e.key==="Enter")makePrompt()});
+</script>
+</body>
+</html>
