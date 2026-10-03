@@ -293,6 +293,86 @@ document
   });
 
 </script>
+<!-- Thumbnail Generator -->
+<section id="thumbnail" class="card">
+  <h2>🖼️ Thumbnail Generator</h2>
 
+  <p>ভিডিওর বিষয় লিখে YouTube Thumbnail Prompt তৈরি করুন।</p>
+
+  <input
+    id="thumbTopic"
+    type="text"
+    placeholder="যেমন: বিশালাকার পাউরুটি ফ্যাক্টরি"
+  >
+
+  <button onclick="makeThumbnailPrompt()">
+    🖼️ Thumbnail Prompt তৈরি করুন
+  </button>
+
+  <button onclick="copyThumbnailPrompt()">
+    📋 Prompt কপি করুন
+  </button>
+
+  <p id="thumbStatus"></p>
+
+  <textarea
+    id="thumbnailPrompt"
+    rows="14"
+    placeholder="এখানে Thumbnail Prompt আসবে..."
+    readonly
+  ></textarea>
+</section>
+
+<script>
+function makeThumbnailPrompt() {
+
+  const topic = document
+    .getElementById("thumbTopic")
+    .value
+    .trim();
+
+  if (!topic) {
+    document.getElementById("thumbStatus").textContent =
+      "⚠️ আগে বিষয় লিখুন।";
+    return;
+  }
+
+  const prompt = `Create an ultra-realistic cinematic YouTube thumbnail about "${topic}".
+
+Make the main subject extremely large, dramatic and visually powerful.
+
+Use a professional YouTube thumbnail composition with realistic lighting, dramatic atmosphere, sharp details, rich textures, cinematic perspective, HDR, realistic shadows and strong depth.
+
+Make the main subject clearly visible and dominant in the frame.
+
+16:9 widescreen composition, photorealistic quality, cinematic lighting, ultra-sharp details, realistic materials, professional photography quality.
+
+8K ultra-detailed, photorealistic cinematic masterpiece.
+
+No watermark, no blurry areas, no distorted objects, no cartoon style.`;
+
+  document.getElementById("thumbnailPrompt").value = prompt;
+
+  document.getElementById("thumbStatus").textContent =
+    "✅ Thumbnail Prompt তৈরি হয়েছে!";
+}
+
+async function copyThumbnailPrompt() {
+
+  const prompt =
+    document.getElementById("thumbnailPrompt").value;
+
+  if (!prompt) {
+    document.getElementById("thumbStatus").textContent =
+      "⚠️ আগে Prompt তৈরি করুন।";
+    return;
+  }
+
+  await navigator.clipboard.writeText(prompt);
+
+  document.getElementById("thumbStatus").textContent =
+    "✅ Prompt কপি হয়েছে!";
+}
+</script>
 </body>
 </html>
