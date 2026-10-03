@@ -1,399 +1,1849 @@
-<!-- HOME -->
-<section id="home"
-style="background:white;padding:25px;border-radius:15px;margin-bottom:20px;text-align:center;">
-
-  <h2>Welcome to YS THE REAL STORY</h2>
-
-  <p>
-    AI Prompt, Video Prompt এবং Creative Tools
-    সহজে তৈরি করুন।
-  </p>
-
-  <a href="#p1">
-    <button>🍔 P1 Food Factory</button>
-  </a>
-
-  <a href="#thumbnail">
-    <button>🖼️ Thumbnail Generator</button>
-  </a>
-
-</section>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>YS THE REAL STORY — P1 Food Factory</title>
-
-<meta name="description" content="YS THE REAL STORY — Miniature Giant Food Factory prompt generator">
+<title>YS THE REAL STORY</title>
 
 <style>
 *{
   box-sizing:border-box;
 }
 
-body{
-  margin:0;
-  background:#f7f7f7;
-  color:#111;
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
+html{
+  scroll-behavior:smooth;
 }
 
-.wrap{
-  max-width:850px;
-  margin:0 auto;
-  padding:28px 16px;
+body{
+  margin:0;
+  background:#f0f2f5;
+  color:#111;
+  font-family:Arial,"Noto Sans Bengali",sans-serif;
+  transition:.25s;
+}
+
+body.dark{
+  background:#18191a;
+  color:#eee;
+}
+
+button,input,textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.dark .header{
+  background:#242526;
+}
+
+.header-inner{
+  max-width:760px;
+  margin:auto;
+  padding:9px 12px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #1877f2;
+  background:#111;
 }
 
 .brand{
-  text-align:center;
-  margin-bottom:22px;
+  flex:1;
+  min-width:0;
 }
 
 .brand h1{
   margin:0;
-  font-size:30px;
+  font-size:19px;
+  white-space:nowrap;
 }
 
 .brand p{
-  color:#666;
-  margin:8px 0 0;
+  margin:2px 0 0;
+  color:#777;
+  font-size:11px;
 }
 
-.card{
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:22px;
-  padding:22px;
-  margin:16px 0;
-  box-shadow:0 3px 15px #0000000b;
+.dark .brand p{
+  color:#aaa;
 }
 
-label{
-  display:block;
-  font-weight:700;
-  font-size:20px;
-  margin-bottom:10px;
-}
-
-input{
-  width:100%;
-  height:56px;
-  border:2px solid #ddd;
-  border-radius:16px;
-  padding:0 18px;
-  font-size:18px;
-  outline:0;
-}
-
-input:focus{
-  border-color:#777;
-}
-
-.buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:12px;
-}
-
-button{
+.top-btn{
+  width:40px;
+  height:40px;
   border:0;
-  border-radius:14px;
-  padding:14px 20px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
+  border-radius:50%;
+  background:#eee;
+  font-size:19px;
 }
 
-.primary{
-  background:#111;
+.dark .top-btn{
+  background:#3a3b3c;
   color:#fff;
 }
 
-.secondary{
-  background:#eee;
+.container{
+  max-width:760px;
+  margin:auto;
+  padding:12px;
+}
+
+/* MENU */
+
+.menu{
+  display:none;
+  background:#fff;
+  border-radius:12px;
+  padding:10px;
+  margin-bottom:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.menu.show{
+  display:block;
+}
+
+.dark .menu{
+  background:#242526;
+}
+
+.menu a{
+  display:block;
+  padding:13px;
+  border-radius:9px;
+  text-decoration:none;
+  color:inherit;
+  font-weight:bold;
+}
+
+.menu a:hover{
+  background:#f0f2f5;
+}
+
+.dark .menu a:hover{
+  background:#3a3b3c;
+}
+
+/* SEARCH */
+
+.search-box{
+  display:none;
+  background:#fff;
+  padding:10px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.search-box.show{
+  display:block;
+}
+
+.dark .search-box{
+  background:#242526;
+}
+
+.search-box input{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:20px;
+  padding:12px 16px;
+  outline:none;
+  font-size:15px;
+}
+
+.search-results{
+  margin-top:8px;
+  font-size:14px;
+  color:#666;
+}
+
+/* STORIES */
+
+.stories{
+  background:#fff;
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  margin-bottom:12px;
+}
+
+.dark .stories{
+  background:#242526;
+}
+
+.story{
+  min-width:105px;
+  height:165px;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:10px;
+  color:#fff;
+  font-weight:bold;
+  background:linear-gradient(135deg,#1877f2,#7b2cff);
+}
+
+.story:nth-child(2){
+  background:linear-gradient(135deg,#111,#777);
+}
+
+.story:nth-child(3){
+  background:linear-gradient(135deg,#00897b,#4caf50);
+}
+
+.story:nth-child(4){
+  background:linear-gradient(135deg,#ff6b00,#e91e63);
+}
+
+.story:nth-child(5){
+  background:linear-gradient(135deg,#673ab7,#03a9f4);
+}
+
+.story-icon{
+  position:absolute;
+  top:8px;
+  left:8px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#fff;
+  color:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+}
+
+/* POST */
+
+.post{
+  background:#fff;
+  border-radius:12px;
+  margin-bottom:14px;
+  overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,.12);
+}
+
+.dark .post{
+  background:#242526;
+}
+
+.post-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+}
+
+.avatar{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+}
+
+.post-info{
+  flex:1;
+}
+
+.post-name{
+  font-weight:bold;
+}
+
+.post-time{
+  font-size:12px;
+  color:#777;
+  margin-top:3px;
+}
+
+.dark .post-time{
+  color:#aaa;
+}
+
+.post-more{
+  border:0;
+  background:transparent;
+  font-size:20px;
+}
+
+.dark .post-more{
+  color:#fff;
+}
+
+.post-text{
+  padding:0 12px 12px;
+  line-height:1.6;
+}
+
+.post-image{
+  min-height:280px;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  font-size:30px;
+  font-weight:bold;
+  line-height:1.3;
+}
+
+.factory{
+  background:linear-gradient(135deg,#080808,#333,#1877f2);
+}
+
+.thumbnail{
+  background:linear-gradient(135deg,#e91e63,#ff9800,#673ab7);
+}
+
+.ai{
+  background:linear-gradient(135deg,#00695c,#00acc1,#1565c0);
+}
+
+.actions{
+  display:flex;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+}
+
+.dark .actions{
+  border-color:#3a3b3c;
+}
+
+.actions button{
+  flex:1;
+  border:0;
+  background:transparent;
+  padding:12px 4px;
+  font-size:14px;
+  color:inherit;
+}
+
+.actions button:hover{
+  background:#f0f2f5;
+}
+
+.dark .actions button:hover{
+  background:#3a3b3c;
+}
+
+/* COMMENTS */
+
+.comment-area{
+  padding:10px 12px;
+  display:none;
+}
+
+.comment-area.show{
+  display:block;
+}
+
+.comment-input{
+  display:flex;
+  gap:7px;
+}
+
+.comment-input input{
+  flex:1;
+  border:0;
+  background:#f0f2f5;
+  border-radius:18px;
+  padding:10px 13px;
+  outline:none;
+}
+
+.dark .comment-input input{
+  background:#3a3b3c;
+  color:#fff;
+}
+
+.comment-input button{
+  border:0;
+  border-radius:18px;
+  padding:8px 13px;
+  background:#1877f2;
+  color:#fff;
+}
+
+.comments-list{
+  margin-top:8px;
+}
+
+.comment{
+  background:#f0f2f5;
+  border-radius:12px;
+  padding:8px 11px;
+  margin-top:7px;
+  font-size:14px;
+}
+
+.dark .comment{
+  background:#3a3b3c;
+}
+
+/* SECTION */
+
+.section-title{
+  font-size:20px;
+  margin:22px 0 10px;
+}
+
+.tool-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.tool{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+
+.dark .tool{
+  background:#242526;
+}
+
+.tool h3{
+  margin:0 0 7px;
+}
+
+.tool p{
+  color:#666;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.dark .tool p{
+  color:#aaa;
+}
+
+.tool button,
+.generate{
+  border:0;
+  border-radius:9px;
+  padding:10px 14px;
+  background:#1877f2;
+  color:#fff;
+  font-weight:bold;
+}
+
+/* GENERATORS */
+
+.generator{
+  background:#fff;
+  border-radius:12px;
+  padding:16px;
+  margin-top:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+
+.dark .generator{
+  background:#242526;
+}
+
+.generator h2{
+  margin-top:0;
+}
+
+.generator input,
+.generator textarea{
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:9px;
+  padding:12px;
+  font-size:15px;
+  outline:none;
+  margin-bottom:8px;
+  background:#fff;
   color:#111;
 }
 
-textarea{
-  width:100%;
-  min-height:620px;
-  border:1px solid #ddd;
-  border-radius:16px;
-  padding:18px;
-  font-size:15px;
-  line-height:1.65;
+.dark .generator input,
+.dark .generator textarea{
+  background:#3a3b3c;
+  color:#fff;
+  border-color:#555;
+}
+
+.generator textarea{
+  min-height:260px;
+  margin-top:10px;
   resize:vertical;
+  line-height:1.6;
 }
 
 .status{
-  margin-top:10px;
-  color:#18864b;
-  font-weight:700;
-  min-height:22px;
+  color:#16803c;
+  font-weight:bold;
+  margin:8px 0;
 }
 
-.small{
-  font-size:14px;
+/* ABOUT */
+
+.about{
+  background:#fff;
+  border-radius:12px;
+  padding:18px;
+  line-height:1.7;
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+
+.dark .about{
+  background:#242526;
+}
+
+footer{
+  text-align:center;
   color:#777;
-  margin-top:9px;
+  padding:25px 10px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:25px;
+  display:none;
+  z-index:2000;
+}
+
+/* MOBILE */
+
+@media(max-width:550px){
+
+  .brand h1{
+    font-size:16px;
+  }
+
+  .brand p{
+    font-size:10px;
+  }
+
+  .tool-grid{
+    grid-template-columns:1fr;
+  }
+
+  .story{
+    min-width:95px;
+    height:150px;
+  }
+
+  .post-image{
+    min-height:240px;
+  }
+
+  .top-btn{
+    width:37px;
+    height:37px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrap">
+<!-- HEADER -->
 
-  <div class="brand">
-    <h1>YS THE REAL STORY</h1>
-    <p>P1 — Miniature Giant Food Factory</p>
-  </div>
+<header class="header">
 
-  <div class="card">
+<div class="header-inner">
 
-    <label for="food">খাবারের নাম লিখুন</label>
+<img
+  src="logo.png"
+  class="logo"
+  alt="YS THE REAL STORY Logo"
+>
 
-    <input
-      id="food"
-      type="search"
-      placeholder="যেমন: পাউরুটি, ভাত, বিরিয়ানি, পিজ্জা"
-      autocomplete="off"
-    >
+<div class="brand">
+<h1>YS THE REAL STORY</h1>
+<p>AI • VIDEO • CREATIVE TOOLS</p>
+</div>
 
-    <div class="buttons">
+<button class="top-btn" onclick="toggleSearch()">🔍</button>
 
-      <button
-        class="primary"
-        onclick="makePrompt()">
-        প্রম্পট তৈরি করুন
-      </button>
+<button class="top-btn" onclick="toggleMenu()">☰</button>
 
-      <button
-        class="secondary"
-        onclick="copyPrompt()">
-        প্রম্পট কপি করুন
-      </button>
+<button class="top-btn" onclick="toggleDark()">🌙</button>
 
-    </div>
+</div>
 
-    <div id="status" class="status"></div>
-
-    <div class="small">
-      খাবারের নাম একবার লিখলেই পুরো প্রম্পটে স্বয়ংক্রিয়ভাবে বসবে।
-    </div>
-
-  </div>
+</header>
 
 
-  <div class="card">
+<main class="container">
 
-    <label for="prompt">
-      সম্পূর্ণ ভিডিও তৈরির প্রম্পট
-    </label>
 
-    <textarea
-      id="prompt"
-      readonly
-      placeholder="খাবারের নাম লিখে “প্রম্পট তৈরি করুন” চাপুন..."
-    ></textarea>
+<!-- SEARCH -->
 
-  </div>
+<div id="searchBox" class="search-box">
+
+<input
+  id="searchInput"
+  type="search"
+  placeholder="Search YS THE REAL STORY..."
+  oninput="searchSite()"
+>
+
+<div id="searchResults" class="search-results"></div>
 
 </div>
 
 
-<script>
+<!-- MENU -->
 
-const template = `একটি অত্যন্ত বাস্তবসম্মত, সিনেমাটিক Miniature Giant Food Factory ভিডিও তৈরি করো, যেখানে শত শত ক্ষুদ্রাকৃতির শ্রমিক একটি বিশালাকার খাবার উৎপাদন কারখানায় কাজ করছে। কারখানার প্রতিটি ধাপে বিশাল মেশিন, ক্ষুদ্র শ্রমিক, বাস্তবসম্মত উপকরণ এবং নিখুঁত স্কেল দেখা যাবে।
+<div id="menu" class="menu">
 
-Scene 1 — কাঁচামাল পরিবহন:
+<a href="#home" onclick="closeMenu()">🏠 Home</a>
 
-একটি বিশাল আধুনিক ফুড ফ্যাক্টরিতে ছোট ছোট ট্রাক ও ক্ষুদ্র শ্রমিকরা কাঁচামাল নিয়ে প্রবেশ করছে। বিশাল কনভেয়র বেল্টের মাধ্যমে উপকরণগুলো উৎপাদন লাইনে যাচ্ছে।
+<a href="#stories" onclick="closeMenu()">📖 Stories</a>
 
-Scene 2 — কাঁচামাল প্রস্তুতি:
+<a href="#posts" onclick="closeMenu()">📝 Posts</a>
 
-শত শত ক্ষুদ্র শ্রমিক বিশাল মেশিনের সাহায্যে কাঁচামাল পরিষ্কার, বাছাই, কাটা এবং প্রস্তুত করছে। প্রতিটি কাজ অত্যন্ত বিস্তারিত ও বাস্তবসম্মতভাবে দেখানো হবে।
+<a href="#tools" onclick="closeMenu()">🧰 Tools</a>
 
-Scene 3 — মূল উৎপাদন প্রক্রিয়া:
+<a href="#about" onclick="closeMenu()">ℹ️ About</a>
 
-বিশালাকার শিল্প মেশিনের মাধ্যমে [FOOD] তৈরির প্রধান প্রক্রিয়া দেখাও। ক্ষুদ্র শ্রমিকরা কন্ট্রোল প্যানেল পরিচালনা করছে, মেশিন পর্যবেক্ষণ করছে এবং উৎপাদনের প্রতিটি ধাপ পরীক্ষা করছে।
-
-Scene 4 — রান্না / প্রক্রিয়াজাতকরণ:
-
-বিশাল শিল্প মেশিনে [FOOD] রান্না বা প্রক্রিয়াজাত হচ্ছে। বাস্তবসম্মত বাষ্প, তাপ, আলো, খাবারের টেক্সচার এবং মেশিনের নড়াচড়া দেখাও।
-
-Scene 5 — চূড়ান্ত খাবার:
-
-প্রচুর পরিমাণে তৈরি হওয়া [FOOD] বিশাল কনভেয়র বেল্ট দিয়ে এগিয়ে যাচ্ছে। ক্ষুদ্র শ্রমিকরা খাবারের মান পরীক্ষা করছে এবং পরবর্তী ধাপের জন্য প্রস্তুত করছে।
-
-Scene 6 — প্যাকেজিং:
-
-ক্ষুদ্র শ্রমিকরা বিশাল স্বয়ংক্রিয় প্যাকেজিং মেশিন ব্যবহার করে তৈরি [FOOD] প্যাকেটজাত করছে। সিল করা, লেবেল লাগানো এবং কোয়ালিটি চেকের দৃশ্য দেখাও।
-
-Final Scene:
-
-পুরো বিশাল ফুড ফ্যাক্টরি পূর্ণ গতিতে চলছে। শত শত ক্ষুদ্র শ্রমিক বিশাল মেশিনের চারপাশে কাজ করছে এবং বিপুল পরিমাণ [FOOD] উৎপাদন হচ্ছে।
-
-Visual Style:
-
-Ultra-realistic, cinematic, highly detailed miniature world, realistic industrial environment, natural cinematic lighting, realistic textures, macro photography look, depth of field, smooth camera movement, physically accurate scale, realistic workers and machinery, 4K/8K quality, no watermark, no unnecessary text.`;
+</div>
 
 
-function makePrompt(){
+<!-- HOME -->
 
-  const food =
-    document.getElementById("food").value.trim();
+<section id="home">
 
-  const status =
-    document.getElementById("status");
+<!-- STORIES -->
 
-  if(!food){
+<div id="stories" class="stories">
 
-    status.textContent =
-      "আগে খাবারের নাম লিখুন।";
+<div class="story">
+<div class="story-icon">+</div>
+Create Story
+</div>
 
-    return;
-  }
+<div class="story">
+<div class="story-icon">🎬</div>
+AI Video
+</div>
 
-  document.getElementById("prompt").value =
-    template.replaceAll("[FOOD]",food);
+<div class="story">
+<div class="story-icon">🍔</div>
+Food Factory
+</div>
 
-  status.textContent =
-    "প্রম্পট তৈরি হয়েছে।";
-}
+<div class="story">
+<div class="story-icon">🖼️</div>
+Thumbnail
+</div>
 
+<div class="story">
+<div class="story-icon">🎙️</div>
+Voice
+</div>
 
-async function copyPrompt(){
-
-  const p =
-    document.getElementById("prompt").value;
-
-  if(!p){
-
-    document.getElementById("status").textContent =
-      "আগে প্রম্পট তৈরি করুন।";
-
-    return;
-  }
-
-  try{
-
-    await navigator.clipboard.writeText(p);
-
-    document.getElementById("status").textContent =
-      "প্রম্পট কপি হয়েছে।";
-
-  }
-
-  catch(e){
-
-    document.getElementById("prompt").select();
-
-    document.execCommand("copy");
-
-    document.getElementById("status").textContent =
-      "প্রম্পট কপি হয়েছে।";
-
-  }
-
-}
+</div>
 
 
-document
-  .getElementById("food")
-  .addEventListener("keydown",e=>{
+<!-- POSTS -->
 
-    if(e.key==="Enter"){
-      makePrompt();
-    }
+<div id="posts">
 
-  });
 
-</script>
-<!-- Thumbnail Generator -->
-<section id="thumbnail" class="card">
-  <h2>🖼️ Thumbnail Generator</h2>
+<!-- POST 1 -->
 
-  <p>ভিডিওর বিষয় লিখে YouTube Thumbnail Prompt তৈরি করুন।</p>
+<article class="post searchable">
 
-  <input
-    id="thumbTopic"
-    type="text"
-    placeholder="যেমন: বিশালাকার পাউরুটি ফ্যাক্টরি"
-  >
+<div class="post-head">
 
-  <button onclick="makeThumbnailPrompt()">
-    🖼️ Thumbnail Prompt তৈরি করুন
-  </button>
+<div class="avatar">YS</div>
 
-  <button onclick="copyThumbnailPrompt()">
-    📋 Prompt কপি করুন
-  </button>
+<div class="post-info">
 
-  <p id="thumbStatus"></p>
+<div class="post-name">
+YS THE REAL STORY
+</div>
 
-  <textarea
-    id="thumbnailPrompt"
-    rows="14"
-    placeholder="এখানে Thumbnail Prompt আসবে..."
-    readonly
-  ></textarea>
+<div class="post-time">
+Just now • 🌐
+</div>
+
+</div>
+
+<button class="post-more"
+onclick="alert('Post options coming soon')">
+⋯
+</button>
+
+</div>
+
+<div class="post-text">
+🎬 AI দিয়ে তৈরি করুন অসাধারণ Miniature Giant Food Factory ভিডিও।
+</div>
+
+<div class="post-image factory">
+🍔<br>
+MINIATURE<br>
+GIANT FOOD FACTORY
+</div>
+
+<div class="actions">
+
+<button onclick="likePost(this)">
+👍 Like
+</button>
+
+<button onclick="toggleComments(this)">
+💬 Comment
+</button>
+
+<button onclick="shareSite()">
+↗️ Share
+</button>
+
+<button onclick="savePost(this)">
+🔖 Save
+</button>
+
+</div>
+
+<div class="comment-area">
+
+<div class="comment-input">
+
+<input
+type="text"
+placeholder="একটি Comment লিখুন..."
+>
+
+<button onclick="addComment(this)">
+Send
+</button>
+
+</div>
+
+<div class="comments-list"></div>
+
+</div>
+
+</article>
+
+
+<!-- POST 2 -->
+
+<article class="post searchable">
+
+<div class="post-head">
+
+<div class="avatar">YS</div>
+
+<div class="post-info">
+
+<div class="post-name">
+YS THE REAL STORY
+</div>
+
+<div class="post-time">
+Today • 🌐
+</div>
+
+</div>
+
+</div>
+
+<div class="post-text">
+🖼️ YouTube ভিডিওর জন্য cinematic Thumbnail Prompt তৈরি করুন।
+</div>
+
+<div class="post-image thumbnail">
+🖼️<br>
+CINEMATIC<br>
+THUMBNAIL
+</div>
+
+<div class="actions">
+
+<button onclick="likePost(this)">
+👍 Like
+</button>
+
+<button onclick="toggleComments(this)">
+💬 Comment
+</button>
+
+<button onclick="shareSite()">
+↗️ Share
+</button>
+
+<button onclick="savePost(this)">
+🔖 Save
+</button>
+
+</div>
+
+<div class="comment-area">
+
+<div class="comment-input">
+
+<input
+type="text"
+placeholder="একটি Comment লিখুন..."
+>
+
+<button onclick="addComment(this)">
+Send
+</button>
+
+</div>
+
+<div class="comments-list"></div>
+
+</div>
+
+</article>
+
+
+<!-- POST 3 -->
+
+<article class="post searchable">
+
+<div class="post-head">
+
+<div class="avatar">YS</div>
+
+<div class="post-info">
+
+<div class="post-name">
+YS THE REAL STORY
+</div>
+
+<div class="post-time">
+Today • 🌐
+</div>
+
+</div>
+
+</div>
+
+<div class="post-text">
+🤖 AI Creative Tools এক জায়গায় ব্যবহার করুন।
+</div>
+
+<div class="post-image ai">
+🤖<br>
+AI CREATIVE<br>
+TOOLS
+</div>
+
+<div class="actions">
+
+<button onclick="likePost(this)">
+👍 Like
+</button>
+
+<button onclick="toggleComments(this)">
+💬 Comment
+</button>
+
+<button onclick="shareSite()">
+↗️ Share
+</button>
+
+<button onclick="savePost(this)">
+🔖 Save
+</button>
+
+</div>
+
+<div class="comment-area">
+
+<div class="comment-input">
+
+<input
+type="text"
+placeholder="একটি Comment লিখুন..."
+>
+
+<button onclick="addComment(this)">
+Send
+</button>
+
+</div>
+
+<div class="comments-list"></div>
+
+</div>
+
+</article>
+
+</div>
+
 </section>
 
+
+<!-- TOOLS -->
+
+<section id="tools">
+
+<h2 class="section-title">
+🧰 Creative Tools
+</h2>
+
+<div class="tool-grid">
+
+
+<div class="tool searchable">
+
+<h3>🍔 P1 Food Factory</h3>
+
+<p>
+Miniature Giant Food Factory Video Prompt তৈরি করুন।
+</p>
+
+<button onclick="openGenerator('food')">
+Open P1
+</button>
+
+</div>
+
+
+<div class="tool searchable">
+
+<h3>🖼️ Thumbnail Generator</h3>
+
+<p>
+YouTube Thumbnail-এর জন্য cinematic Prompt তৈরি করুন।
+</p>
+
+<button onclick="openGenerator('thumbnail')">
+Open
+</button>
+
+</div>
+
+
+<div class="tool searchable">
+
+<h3>🎬 Shorts Script</h3>
+
+<p>
+YouTube Shorts-এর জন্য Script তৈরি করুন।
+</p>
+
+<button onclick="openGenerator('shorts')">
+Open
+</button>
+
+</div>
+
+
+<div class="tool searchable">
+
+<h3>🎙️ Voiceover</h3>
+
+<p>
+ভিডিও Voiceover Script তৈরি করুন।
+</p>
+
+<button onclick="openGenerator('voice')">
+Open
+</button>
+
+</div>
+
+
+<div class="tool searchable">
+
+<h3>🖼️ Image Prompt</h3>
+
+<p>
+AI Image Generator-এর জন্য Prompt তৈরি করুন।
+</p>
+
+<button onclick="openGenerator('image')">
+Open
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOD -->
+
+<div
+id="foodGenerator"
+class="generator"
+style="display:none"
+>
+
+<h2>🍔 P1 Food Factory</h2>
+
+<input
+id="foodName"
+placeholder="খাবারের নাম লিখুন"
+>
+
+<button
+class="generate"
+onclick="makeFoodPrompt()"
+>
+Prompt তৈরি করুন
+</button>
+
+<button
+class="generate"
+onclick="copyText('foodPrompt')"
+>
+📋 Copy
+</button>
+
+<div
+id="foodStatus"
+class="status"
+></div>
+
+<textarea
+id="foodPrompt"
+readonly
+placeholder="এখানে Prompt আসবে..."
+></textarea>
+
+</div>
+
+
+<!-- THUMBNAIL -->
+
+<div
+id="thumbnailGenerator"
+class="generator"
+style="display:none"
+>
+
+<h2>🖼️ Thumbnail Generator</h2>
+
+<input
+id="thumbTopic"
+placeholder="বিষয় লিখুন"
+>
+
+<button
+class="generate"
+onclick="makeThumbnailPrompt()"
+>
+Thumbnail Prompt তৈরি করুন
+</button>
+
+<button
+class="generate"
+onclick="copyText('thumbnailPrompt')"
+>
+📋 Copy
+</button>
+
+<div
+id="thumbStatus"
+class="status"
+></div>
+
+<textarea
+id="thumbnailPrompt"
+readonly
+placeholder="এখানে Thumbnail Prompt আসবে..."
+></textarea>
+
+</div>
+
+
+<!-- SHORTS -->
+
+<div
+id="shortsGenerator"
+class="generator"
+style="display:none"
+>
+
+<h2>🎬 Shorts Script Generator</h2>
+
+<input
+id="shortsTopic"
+placeholder="যেমন: মিথ্যা বলা কেন ছাড়তে হবে"
+>
+
+<button
+class="generate"
+onclick="makeShortsPrompt()"
+>
+Script তৈরি করুন
+</button>
+
+<button
+class="generate"
+onclick="copyText('shortsPrompt')"
+>
+📋 Copy
+</button>
+
+<div
+id="shortsStatus"
+class="status"
+></div>
+
+<textarea
+id="shortsPrompt"
+readonly
+placeholder="এখানে Shorts Script আসবে..."
+></textarea>
+
+</div>
+
+
+<!-- VOICE -->
+
+<div
+id="voiceGenerator"
+class="generator"
+style="display:none"
+>
+
+<h2>🎙️ Voiceover Generator</h2>
+
+<input
+id="voiceTopic"
+placeholder="Voiceover-এর বিষয় লিখুন"
+>
+
+<button
+class="generate"
+onclick="makeVoicePrompt()"
+>
+Voiceover তৈরি করুন
+</button>
+
+<button
+class="generate"
+onclick="copyText('voicePrompt')"
+>
+📋 Copy
+</button>
+
+<div
+id="voiceStatus"
+class="status"
+></div>
+
+<textarea
+id="voicePrompt"
+readonly
+placeholder="এখানে Voiceover Script আসবে..."
+></textarea>
+
+</div>
+
+
+<!-- IMAGE -->
+
+<div
+id="imageGenerator"
+class="generator"
+style="display:none"
+>
+
+<h2>🖼️ Image Prompt Generator</h2>
+
+<input
+id="imageTopic"
+placeholder="যেমন: বৃষ্টির মধ্যে গ্রামের রাস্তা"
+>
+
+<button
+class="generate"
+onclick="makeImagePrompt()"
+>
+Image Prompt তৈরি করুন
+</button>
+
+<button
+class="generate"
+onclick="copyText('imagePrompt')"
+>
+📋 Copy
+</button>
+
+<div
+id="imageStatus"
+class="status"
+></div>
+
+<textarea
+id="imagePrompt"
+readonly
+placeholder="এখানে Image Prompt আসবে..."
+></textarea>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">
+ℹ️ About
+</h2>
+
+<div class="about">
+
+<h3>YS THE REAL STORY</h3>
+
+<p>
+AI Prompt, Video Prompt, Thumbnail,
+Shorts Script, Voiceover এবং বিভিন্ন
+Creative Tool সহজে ব্যবহার করার জন্য
+তৈরি একটি প্ল্যাটফর্ম।
+</p>
+
+<p>
+এই ওয়েবসাইটটি মোবাইল এবং কম্পিউটার
+উভয় ডিভাইসের জন্য তৈরি।
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+© 2026 YS THE REAL STORY
+</footer>
+
+</main>
+
+
+<div id="toast" class="toast"></div>
+
+
 <script>
-function makeThumbnailPrompt() {
 
-  const topic = document
-    .getElementById("thumbTopic")
-    .value
-    .trim();
+/* MENU */
 
-  if (!topic) {
-    document.getElementById("thumbStatus").textContent =
-      "⚠️ আগে বিষয় লিখুন।";
-    return;
-  }
+function toggleMenu(){
 
-  const prompt = `Create an ultra-realistic cinematic YouTube thumbnail about "${topic}".
+const menu=document.getElementById("menu");
 
-Make the main subject extremely large, dramatic and visually powerful.
+menu.classList.toggle("show");
 
-Use a professional YouTube thumbnail composition with realistic lighting, dramatic atmosphere, sharp details, rich textures, cinematic perspective, HDR, realistic shadows and strong depth.
+}
 
-Make the main subject clearly visible and dominant in the frame.
+function closeMenu(){
 
-16:9 widescreen composition, photorealistic quality, cinematic lighting, ultra-sharp details, realistic materials, professional photography quality.
+document.getElementById("menu").classList.remove("show");
 
-8K ultra-detailed, photorealistic cinematic masterpiece.
+}
+
+
+/* SEARCH */
+
+function toggleSearch(){
+
+const box=document.getElementById("searchBox");
+
+box.classList.toggle("show");
+
+if(box.classList.contains("show")){
+
+document.getElementById("searchInput").focus();
+
+}
+
+}
+
+function searchSite(){
+
+const query=
+document.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
+
+const items=
+document.querySelectorAll(".searchable");
+
+let count=0;
+
+items.forEach(item=>{
+
+const text=item.innerText.toLowerCase();
+
+if(!query || text.includes(query)){
+
+item.style.display="";
+
+count++;
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+document.getElementById("searchResults").textContent=
+query
+? count+"টি ফলাফল পাওয়া গেছে"
+: "";
+
+}
+
+
+/* DARK MODE */
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+localStorage.setItem(
+"ysDark",
+document.body.classList.contains("dark")
+);
+
+}
+
+if(localStorage.getItem("ysDark")==="true"){
+
+document.body.classList.add("dark");
+
+}
+
+
+/* TOOLS */
+
+function openGenerator(type){
+
+const ids=[
+"foodGenerator",
+"thumbnailGenerator",
+"shortsGenerator",
+"voiceGenerator",
+"imageGenerator"
+];
+
+ids.forEach(id=>{
+
+document.getElementById(id).style.display="none";
+
+});
+
+const target=
+document.getElementById(type+"Generator");
+
+if(target){
+
+target.style.display="block";
+
+target.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
+
+}
+
+}
+
+
+/* FOOD */
+
+function makeFoodPrompt(){
+
+const food=
+document.getElementById("foodName")
+.value
+.trim();
+
+if(!food){
+
+document.getElementById("foodStatus")
+.textContent="⚠️ আগে খাবারের নাম লিখুন।";
+
+return;
+
+}
+
+const prompt=`Create an ultra-realistic cinematic Miniature Giant Food Factory video featuring ${food}.
+
+Show a massive industrial food factory where hundreds of tiny miniature workers manufacture an enormous amount of ${food}.
+
+Scene 1 — Raw Ingredients:
+Show miniature workers unloading fresh ingredients from tiny trucks using forklifts and conveyor belts.
+
+Scene 2 — Preparation:
+Show workers washing, cutting, sorting and preparing ingredients using giant industrial machines.
+
+Scene 3 — Production:
+Show the realistic production process of ${food} with giant machines, pipes, conveyor belts and hundreds of miniature workers.
+
+Scene 4 — Cooking:
+Show the ingredients being cooked, mixed, heated and processed realistically.
+
+Scene 5 — Final Food:
+Show the finished ${food} moving through the factory while workers inspect the product.
+
+Scene 6 — Packaging:
+Show miniature workers packaging ${food} using giant automated machines and conveyor belts.
+
+Final Scene:
+Show the huge finished production area filled with ${food}.
+
+Visual Style:
+Ultra-realistic, cinematic, photorealistic miniature world, realistic materials, dramatic lighting, realistic shadows, macro photography, depth of field, 8K detail, sharp focus, professional filmmaking quality.
+
+No cartoon style, no blurry objects, no distorted workers, no watermark.`;
+
+document.getElementById("foodPrompt").value=prompt;
+
+document.getElementById("foodStatus")
+.textContent="✅ Prompt তৈরি হয়েছে!";
+
+}
+
+
+/* THUMBNAIL */
+
+function makeThumbnailPrompt(){
+
+const topic=
+document.getElementById("thumbTopic")
+.value
+.trim();
+
+if(!topic){
+
+document.getElementById("thumbStatus")
+.textContent="⚠️ আগে বিষয় লিখুন।";
+
+return;
+
+}
+
+const prompt=`Create an ultra-realistic cinematic YouTube thumbnail about "${topic}".
+
+Make the main subject extremely large, dramatic, visually powerful and instantly understandable.
+
+Professional viral YouTube thumbnail composition with realistic lighting, dramatic atmosphere, sharp details, rich textures, cinematic perspective, HDR, realistic shadows and strong depth.
+
+Make the main subject clearly visible and dominant.
+
+16:9 widescreen composition.
+
+Photorealistic, cinematic, ultra-sharp, highly detailed, professional photography quality, 8K detail.
 
 No watermark, no blurry areas, no distorted objects, no cartoon style.`;
 
-  document.getElementById("thumbnailPrompt").value = prompt;
+document.getElementById("thumbnailPrompt").value=prompt;
 
-  document.getElementById("thumbStatus").textContent =
-    "✅ Thumbnail Prompt তৈরি হয়েছে!";
+document.getElementById("thumbStatus")
+.textContent="✅ Thumbnail Prompt তৈরি হয়েছে!";
+
 }
 
-async function copyThumbnailPrompt() {
 
-  const prompt =
-    document.getElementById("thumbnailPrompt").value;
+/* SHORTS */
 
-  if (!prompt) {
-    document.getElementById("thumbStatus").textContent =
-      "⚠️ আগে Prompt তৈরি করুন।";
-    return;
-  }
+function makeShortsPrompt(){
 
-  await navigator.clipboard.writeText(prompt);
+const topic=
+document.getElementById("shortsTopic")
+.value
+.trim();
 
-  document.getElementById("thumbStatus").textContent =
-    "✅ Prompt কপি হয়েছে!";
+if(!topic){
+
+document.getElementById("shortsStatus")
+.textContent="⚠️ আগে বিষয় লিখুন।";
+
+return;
+
 }
+
+const prompt=`Create a powerful Bengali YouTube Shorts script about "${topic}".
+
+Duration: approximately 30–40 seconds.
+
+Start with a strong attention-grabbing hook.
+
+Then explain the topic in simple and engaging Bengali.
+
+Use short natural sentences suitable for voiceover.
+
+Keep the pacing fast and interesting.
+
+End with a memorable final line suitable for a YouTube Shorts video.
+
+Do not use unnecessary numbering.`;
+
+document.getElementById("shortsPrompt").value=prompt;
+
+document.getElementById("shortsStatus")
+.textContent="✅ Shorts Script তৈরি হয়েছে!";
+
+}
+
+
+/* VOICE */
+
+function makeVoicePrompt(){
+
+const topic=
+document.getElementById("voiceTopic")
+.value
+.trim();
+
+if(!topic){
+
+document.getElementById("voiceStatus")
+.textContent="⚠️ আগে বিষয় লিখুন।";
+
+return;
+
+}
+
+const prompt=`Write a natural Bengali voiceover script about "${topic}".
+
+Use clear conversational Bengali.
+
+The opening should immediately grab attention.
+
+Keep each sentence easy to speak and understand.
+
+Use natural pauses between important ideas.
+
+Make the narration emotional, engaging and suitable for a short video.
+
+Finish with a strong memorable ending.`;
+
+document.getElementById("voicePrompt").value=prompt;
+
+document.getElementById("voiceStatus")
+.textContent="✅ Voiceover তৈরি হয়েছে!";
+
+}
+
+
+/* IMAGE */
+
+function makeImagePrompt(){
+
+const topic=
+document.getElementById("imageTopic")
+.value
+.trim();
+
+if(!topic){
+
+document.getElementById("imageStatus")
+.textContent="⚠️ আগে বিষয় লিখুন।";
+
+return;
+
+}
+
+const prompt=`Create an ultra-realistic cinematic image of "${topic}".
+
+Photorealistic quality, natural realistic lighting, detailed textures, realistic materials, cinematic composition, depth of field, HDR, sharp focus, realistic shadows, professional photography, dramatic atmosphere, highly detailed, 8K quality.
+
+Preserve realistic proportions and natural appearance.
+
+No cartoon style, no blurry details, no watermark, no distorted objects.`;
+
+document.getElementById("imagePrompt").value=prompt;
+
+document.getElementById("imageStatus")
+.textContent="✅ Image Prompt তৈরি হয়েছে!";
+
+}
+
+
+/* COPY */
+
+async function copyText(id){
+
+const text=
+document.getElementById(id).value;
+
+if(!text){
+
+showToast("⚠️ আগে Prompt তৈরি করুন");
+
+return;
+
+}
+
+try{
+
+await navigator.clipboard.writeText(text);
+
+showToast("✅ Prompt কপি হয়েছে!");
+
+}catch(e){
+
+showToast("⚠️ কপি করা যায়নি");
+
+}
+
+}
+
+
+/* LIKE */
+
+function likePost(button){
+
+if(button.dataset.liked==="yes"){
+
+button.dataset.liked="no";
+
+button.innerHTML="👍 Like";
+
+}else{
+
+button.dataset.liked="yes";
+
+button.innerHTML="❤️ Liked";
+
+}
+
+}
+
+
+/* COMMENTS */
+
+function toggleComments(button){
+
+const post=button.closest(".post");
+
+const area=
+post.querySelector(".comment-area");
+
+area.classList.toggle("show");
+
+loadComments(post);
+
+}
+
+
+function addComment(button){
+
+const area=
+button.closest(".comment-area");
+
+const input=
+area.querySelector("input");
+
+const text=
+input.value.trim();
+
+if(!text) return;
+
+const post=
+button.closest(".post");
+
+const list=
+area.querySelector(".comments-list");
+
+const comment=
+document.createElement("div");
+
+comment.className="comment";
+
+comment.textContent="👤 "+text;
+
+list.appendChild(comment);
+
+input.value="";
+
+saveComments(post);
+
+}
+
+
+function saveComments(post){
+
+const comments=
+Array.from(
+post.querySelectorAll(".comment")
+)
+.map(x=>x.textContent);
+
+const index=
+Array.from(
+document.querySelectorAll(".post")
+).indexOf(post);
+
+localStorage.setItem(
+"ysComments"+index,
+JSON.stringify(comments)
+);
+
+}
+
+
+function loadComments(post){
+
+const index=
+Array.from(
+document.querySelectorAll(".post")
+).indexOf(post);
+
+const saved=
+localStorage.getItem(
+"ysComments"+index
+);
+
+if(!saved) return;
+
+const list=
+post.querySelector(".comments-list");
+
+list.innerHTML="";
+
+JSON.parse(saved).forEach(text=>{
+
+const comment=
+document.createElement("div");
+
+comment.className="comment";
+
+comment.textContent=text;
+
+list.appendChild(comment);
+
+});
+
+}
+
+
+/* SAVE */
+
+function savePost(button){
+
+if(button.dataset.saved==="yes"){
+
+button.dataset.saved="no";
+
+button.innerHTML="🔖 Save";
+
+showToast("Save সরানো হয়েছে");
+
+}else{
+
+button.dataset.saved="yes";
+
+button.innerHTML="🔖 Saved";
+
+showToast("✅ Post Saved");
+
+}
+
+}
+
+
+/* SHARE */
+
+async function shareSite(){
+
+if(navigator.share){
+
+try{
+
+await navigator.share({
+
+title:"YS THE REAL STORY",
+
+text:"YS THE REAL STORY — AI Creative Tools",
+
+url:window.location.href
+
+});
+
+}catch(e){}
+
+}else{
+
+try{
+
+await navigator.clipboard.writeText(
+window.location.href
+);
+
+showToast("✅ Website link কপি হয়েছে!");
+
+}catch(e){
+
+showToast("Website link: "+window.location.href);
+
+}
+
+}
+
+}
+
+
+/* TOAST */
+
+function showToast(message){
+
+const toast=
+document.getElementById("toast");
+
+toast.textContent=message;
+
+toast.style.display="block";
+
+setTimeout(()=>{
+
+toast.style.display="none";
+
+},2000);
+
+}
+
 </script>
+
 </body>
 </html>
